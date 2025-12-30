@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookkeeping & Tax Strategy Guide | Justin Abdella</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Stripe-inspired color palette */
+            --primary: #635bff;
+            --primary-dark: #5046e5;
+            --primary-light: #7a73ff;
+            --accent: #00d4ff;
+            --success: #00d924;
+            --warning: #ffbb00;
+            --background: #0a2540;
+            --background-light: #1a3a5c;
+            --surface: #0f3460;
+            --surface-light: #1e4976;
+            --text-primary: #ffffff;
+            --text-secondary: #adbdcc;
+            --text-muted: #8898aa;
+            --border: rgba(255, 255, 255, 0.1);
+            --gradient-start: #635bff;
+            --gradient-end: #00d4ff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--background);
+            color: var(--text-primary);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--background) 0%, var(--background-light) 50%, var(--surface) 100%);
+            padding: 80px 20px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(99, 91, 255, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 20px;
+            color: white;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--text-primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero .subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* Section Cards */
+        .section {
+            background: var(--surface);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 32px;
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+        }
+
+        .section-icon {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .section h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 700;
+        }
+
+        .section p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        /* Lists */
+        .step-list {
+            list-style: none;
+            counter-reset: step;
+        }
+
+        .step-list li {
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 16px;
+            counter-increment: step;
+        }
+
+        .step-list li::before {
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 2px;
+            width: 28px;
+            height: 28px;
+            background: var(--surface-light);
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--primary-light);
+        }
+
+        /* Option Cards */
+        .option-grid {
+            display: grid;
+            gap: 20px;
+            margin-top: 24px;
+        }
+
+        .option-card {
+            background: var(--surface-light);
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid var(--border);
+            transition: border-color 0.3s ease;
+        }
+
+        .option-card:hover {
+            border-color: var(--primary);
+        }
+
+        .option-card h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .option-letter {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: var(--primary);
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .option-card p {
+            margin-bottom: 12px;
+            font-size: 0.9375rem;
+        }
+
+        .option-card .label {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Tags */
+        .tag {
+            display: inline-block;
+            background: rgba(99, 91, 255, 0.2);
+            color: var(--primary-light);
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 0.8125rem;
+            font-weight: 500;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+        }
+
+        .tag-success {
+            background: rgba(0, 217, 36, 0.15);
+            color: var(--success);
+        }
+
+        .tag-warning {
+            background: rgba(255, 187, 0, 0.15);
+            color: var(--warning);
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(99, 91, 255, 0.1), rgba(0, 212, 255, 0.1));
+            border: 1px solid var(--primary);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            color: var(--text-primary);
+        }
+
+        .highlight-box strong {
+            color: var(--accent);
+        }
+
+        /* Bullet Lists */
+        .bullet-list {
+            list-style: none;
+        }
+
+        .bullet-list li {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 12px;
+            color: var(--text-secondary);
+        }
+
+        .bullet-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 8px;
+            height: 8px;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            border-radius: 50%;
+        }
+
+        /* Code/Technical */
+        code {
+            background: var(--surface-light);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 0.875rem;
+            color: var(--accent);
+        }
+
+        /* Divider */
+        hr {
+            border: none;
+            height: 1px;
+            background: var(--border);
+            margin: 30px 0;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        .footer-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .footer-logo .logo-icon {
+            width: 32px;
+            height: 32px;
+            font-size: 14px;
+        }
+
+        .footer-logo .logo-text {
+            font-size: 18px;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+
+        /* Mobile Responsive */
+        @media (max-width: 640px) {
+            .hero {
+                padding: 60px 20px 40px;
+            }
+
+            .section {
+                padding: 28px 20px;
+            }
+
+            .option-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <div class="logo">
+            <div class="logo-icon">EW</div>
+            <span class="logo-text">Endless Winning</span>
+        </div>
+        <div class="badge">Automated Bookkeeping</div>
+        <h1>Bookkeeping & Tax Strategy Guide</h1>
+        <p class="subtitle">Welcome to your automated bookkeeping system! This guide explains how we handle your transactions to maximize your tax deductions and protect your companies.</p>
+    </header>
+
+    <main class="container">
+        <!-- Section 1: Vivint Reimbursement -->
+        <section class="section">
+            <div class="section-icon">🏗️</div>
+            <h2><span class="section-number">1</span> The Vivint Reimbursement Workflow</h2>
+            <p>When you spend money on a trip (meals, tolls, lodging) that Vivint is paying you back for, we use a specific workflow to ensure the income and expense match <strong>1:1</strong>. This ensures you don't pay tax on the reimbursement and allows for optimized deductions.</p>
+
+            <h3 style="font-size: 1.125rem; margin: 24px 0 16px; color: var(--text-primary);">How to handle these on the platform:</h3>
+            <ol class="step-list">
+                <li><strong>Tag as Reimbursable:</strong> When you spend money on a completely reimbursable trip (meals, tolls, etc.), you <strong>MUST</strong> add a tag as <span class="tag">Reimbursable</span></li>
+                <li><strong>Unique Trip Naming:</strong> Add whatever city/name you want for your own records (e.g., "Miami").</li>
+                <li><strong>Handling Multiple Trips:</strong> If you are doing multiple trips for the same client, name them sequentially: <span class="tag">"City 01"</span>, <span class="tag">"City 02"</span>, etc.</li>
+                <li><strong>Why?</strong> We need a 1:1 match between your spending and the specific reimbursement deposit you get from Vivint. This process maximizes your tax write-off and eliminates your tax liability on that income.</li>
+            </ol>
+        </section>
+
+        <!-- Section 2: Sales Rep Incentives -->
+        <section class="section">
+            <div class="section-icon">🎁</div>
+            <h2><span class="section-number">2</span> Sales Rep Incentives & Prizes</h2>
+            <p>When you award prizes or bonuses (e.g., shoes, tech, cash) to your sales reps, you have three distinct ways to handle the tax impact:</p>
+
+            <div class="option-grid">
+                <div class="option-card">
+                    <h3><span class="option-letter">A</span> Vivint Corporate Reimbursement</h3>
+                    <p><span class="label">How it works:</span> You pay for the prize and submit it to Vivint for reimbursement.</p>
+                    <p><span class="label">Tax Impact:</span> This follows the reimbursement workflow above. Vivint covers the cost, and <em>Vivint</em> handles assigning the tax liability to the sales rep's 1099.</p>
+                    <p><span class="label">Result:</span> <span class="tag tag-success">Zero tax liability</span> You get a 1:1 match on your books.</p>
+                </div>
+
+                <div class="option-card">
+                    <h3><span class="option-letter">B</span> Local Business Bonus (LiveLife)</h3>
+                    <p><span class="label">How it works:</span> You pay for the prize directly from your business account and keep the deduction.</p>
+                    <p><span class="label">Tax Impact:</span> This is coded as <code>6860 · Bonuses and Commissions</code>. At the end of the year, we will aggregate these values and include them on the rep's <strong>1099-NEC</strong>.</p>
+                    <p><span class="label">Compliance:</span> We <strong>MUST</strong> have a <span class="tag tag-warning">W-9 on file</span> for the rep, and the transaction must be linked to that specific rep on the platform.</p>
+                    <p><span class="label">Result:</span> <span class="tag tag-success">100% tax write-off</span> The rep pays the income tax on the prize value.</p>
+                </div>
+
+                <div class="option-card">
+                    <h3><span class="option-letter">C</span> The MDNT "Brand Ambassador" Pivot</h3>
+                    <p><span class="label">How it works:</span> The rep is officially classified as a <strong>Brand Tester/Influencer</strong> for MDNT. Ideally, <strong>MDNT makes the purchase directly</strong> to keep the R&D deduction inside the fashion entity.</p>
+                    <p><span class="label">Tax Impact:</span> The prize is treated as an <strong>R&D Research Sample</strong>. MDNT buys the item, and the rep provides a feedback report.</p>
+                    <p><span class="label">Compliance:</span> A <span class="tag tag-warning">Brand Ambassador Agreement</span> must be signed and on file for the rep to qualify for this treatment.</p>
+                    <p><span class="label">Result:</span> <span class="tag tag-success">Most tax-efficient</span> Often tax-free to the rep while remaining 100% deductible for the brand as research.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Research Pivot -->
+        <section class="section">
+            <div class="section-icon">👕</div>
+            <h2><span class="section-number">3</span> The "Research Pivot" (MDNT Brand Development)</h2>
+            <p>For your own R&D items (designer clothes, fitness tech, etc.), the strongest audit protection comes from <strong>MDNT making the purchase directly</strong>.</p>
+
+            <h3 style="font-size: 1.125rem; margin: 24px 0 16px; color: var(--text-primary);">The Funding Model: LiveLife → MDNT Sponsorship</h3>
+            <p>Since LiveLife is the primary income generator, it "funds" the research by paying MDNT a <strong>Management Fee</strong> or a <strong>Marketing Sponsorship</strong>.</p>
+
+            <ul class="bullet-list">
+                <li><strong>On LiveLife's books:</strong> This is a simple, 100% deductible business expense (Marketing/Management Fee).</li>
+                <li><strong>On MDNT's books:</strong> This is income, which is then used to buy the research samples.</li>
+                <li><strong>Why?</strong> It is much easier to defend a $2,000 fashion purchase as "Market Intelligence" in a fashion company (MDNT) than in a sales group (LiveLife).</li>
+            </ul>
+
+            <h3 style="font-size: 1.125rem; margin: 24px 0 16px; color: var(--text-primary);">How to handle these on the platform:</h3>
+            <ol class="step-list">
+                <li><strong>Direct Purchase:</strong> Whenever possible, use an MDNT-specific card for these items.</li>
+                <li><strong>Intercompany (Back-up):</strong> If you use your LiveLife card, we must code it as a <span class="tag">Loan to MDNT</span> so the account "belongs" to the fashion entity.</li>
+                <li><strong>The "Feedback Loop":</strong> You <strong>MUST</strong> have a record of the research.
+                    <div class="highlight-box">
+                        <p><strong>Action:</strong> Send a quick photo or text log (e.g., "Testing sole durability and fit for MDNT V1") every time you buy one of these items.</p>
+                        <p style="margin-top: 12px;"><strong>System:</strong> We link these logs directly to the transaction to prove it wasn't just personal shopping.</p>
+                    </div>
+                </li>
+            </ol>
+        </section>
+
+        <!-- Section 4: Owner Distributions -->
+        <section class="section">
+            <div class="section-icon">💳</div>
+            <h2><span class="section-number">4</span> Owner Distributions vs. Personal Expenses</h2>
+            <p>To protect your <strong>Corporate Veil</strong> (your legal shield), we need to distinguish <em>how</em> you take money.</p>
+
+            <ul class="bullet-list">
+                <li><strong>Owner Distributions (The Right Way):</strong> Transfer a lump sum (e.g., $5,000) from Business Checking to Personal Checking. Use your <em>Personal</em> card for groceries, clothes, and family.</li>
+                <li><strong>Personal Expenses (The "Cleanup"):</strong> If you accidentally swipe your business card at Publix, we will code it as a "Personal Expense." This is a "correction" on the books.</li>
+            </ul>
+
+            <div class="highlight-box">
+                <p><strong>⚠️ Note:</strong> Too many personal expense corrections can make your company look like an "alter ego," which is a legal risk. Aim for fewer swipes and more "Lump Sum" transfers.</p>
+            </div>
+        </section>
+
+        <!-- Section 5: Cash & ATM -->
+        <section class="section">
+            <div class="section-icon">🏧</div>
+            <h2><span class="section-number">5</span> Cash & ATM Withdrawals</h2>
+            <p>Cash is the hardest thing to track.</p>
+
+            <ul class="bullet-list">
+                <li><strong>Default:</strong> All ATM hits are logged as <span class="tag">Owner Distributions</span> (Money to you).</li>
+                <li><strong>The Write-off:</strong> If you use that cash to pay reps or buy supplies, <strong>upload the receipt immediately</strong>.</li>
+                <li><strong>Benefit:</strong> Without a receipt, that cash is "Personal" and you pay tax on it. With a receipt, it becomes a "Business Deduction" and you save money.</li>
+            </ul>
+
+            <div class="highlight-box">
+                <p><strong>💡 Pro Tip:</strong> Snap a photo of every cash receipt immediately. No receipt = no deduction = more taxes.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-logo">
+            <div class="logo-icon">EW</div>
+            <span class="logo-text">Endless Winning</span>
+        </div>
+        <p>Automated Bookkeeping & Tax Strategy</p>
+        <p style="margin-top: 8px;">© 2024 Endless Winning Agency. All rights reserved.</p>
+    </footer>
+</body>
+</html>
