@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment | 60-Day Marketing System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        border: "hsl(240 3.7% 15.9%)",
+                        background: "hsl(240 10% 3.9%)",
+                        foreground: "hsl(0 0% 98%)",
+                        primary: { DEFAULT: "hsl(0 0% 98%)", foreground: "hsl(240 5.9% 10%)" },
+                        secondary: { DEFAULT: "hsl(240 3.7% 15.9%)", foreground: "hsl(0 0% 98%)" },
+                        muted: { DEFAULT: "hsl(240 3.7% 15.9%)", foreground: "hsl(240 5% 64.9%)" },
+                        charcoal: "hsl(240 6% 10%)",
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .nav-scroll {
+            -webkit-overflow-scrolling: touch;
+            scroll-snap-type: x mandatory;
+            scroll-padding: 0 16px;
+        }
+        .nav-scroll > a { scroll-snap-align: center; }
+        .nav-container { position: relative; }
+        .nav-container::before,
+        .nav-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 24px;
+            pointer-events: none;
+            z-index: 10;
+        }
+        .nav-container::before {
+            left: 0;
+            background: linear-gradient(to right, hsl(240 10% 3.9%), transparent);
+        }
+        .nav-container::after {
+            right: 0;
+            background: linear-gradient(to left, hsl(240 10% 3.9%), transparent);
+        }
+    </style>
+</head>
+<body class="bg-background text-foreground min-h-screen antialiased">
+    <header class="border-b border-border">
+        <div class="max-w-3xl mx-auto px-4 py-6 text-center">
+            <h1 class="text-xl font-semibold tracking-tight">60-Day Marketing System</h1>
+        </div>
+    </header>
+
+    <nav class="sticky top-0 z-50 bg-background/95 backdrop-blur border-b border-border">
+        <div class="nav-container max-w-3xl mx-auto">
+            <div class="nav-scroll no-scrollbar overflow-x-auto flex gap-1 px-4 py-3 sm:justify-center">
+                <a href="index.html" class="flex-shrink-0 inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground hover:bg-secondary transition-colors">Overview</a>
+                <a href="branding.html" class="flex-shrink-0 inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground hover:bg-secondary transition-colors">Branding</a>
+                <a href="video.html" class="flex-shrink-0 inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground hover:bg-secondary transition-colors">Video</a>
+                <a href="crm.html" class="flex-shrink-0 inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground hover:bg-secondary transition-colors">CRM</a>
+                <a href="ai.html" class="flex-shrink-0 inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground hover:bg-secondary transition-colors">AI</a>
+                <a href="social.html" class="flex-shrink-0 inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground hover:bg-secondary transition-colors">Social</a>
+                <a href="ads.html" class="flex-shrink-0 inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground hover:bg-secondary transition-colors">Ads</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-3xl mx-auto px-4 py-8 space-y-6">
+        <!-- Investment / Timeline Toggle -->
+        <div class="flex justify-center gap-2">
+            <a href="investment.html" class="inline-flex items-center justify-center rounded-full bg-primary text-primary-foreground px-6 py-2 text-sm font-semibold">
+                Investment
+            </a>
+            <a href="timeline.html" class="inline-flex items-center justify-center rounded-full border border-border text-muted-foreground px-6 py-2 text-sm font-medium hover:bg-secondary transition-colors">
+                Timeline
+            </a>
+        </div>
+
+        <div class="text-center">
+            <span class="inline-flex w-12 h-12 rounded-full bg-primary text-primary-foreground items-center justify-center text-lg font-semibold mb-3">$</span>
+            <h2 class="text-xl font-semibold">Investment</h2>
+            <p class="text-sm text-muted-foreground mt-1">Complete pricing breakdown</p>
+        </div>
+
+        <!-- Main Investment -->
+        <div class="rounded-lg border border-border overflow-hidden">
+            <div class="bg-charcoal py-4">
+                <h3 class="font-medium text-center">Your Investment</h3>
+            </div>
+            <div class="divide-y divide-border">
+                <div class="flex justify-between items-center px-4 py-4">
+                    <div>
+                        <p class="font-medium">Upfront (All 5 Packages)</p>
+                        <p class="text-xs text-muted-foreground">One-time build</p>
+                    </div>
+                    <p class="text-2xl font-semibold">$27,000</p>
+                </div>
+                <div class="flex justify-between items-center px-4 py-4">
+                    <div>
+                        <p class="font-medium">Monthly Maintenance</p>
+                        <p class="text-xs text-muted-foreground">Ongoing management</p>
+                    </div>
+                    <p class="text-2xl font-semibold">$3,500<span class="text-sm font-normal text-muted-foreground">/mo</span></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Maintenance Includes -->
+        <div class="rounded-lg border border-border overflow-hidden">
+            <div class="bg-charcoal py-4">
+                <h3 class="font-medium text-center">Monthly Maintenance Includes</h3>
+            </div>
+            <div class="p-4">
+                <div class="grid grid-cols-2 gap-2 text-sm">
+                    <div class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Campaign management</div>
+                    <div class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Weekly reporting</div>
+                    <div class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> CRM maintenance</div>
+                    <div class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> AI monitoring</div>
+                    <div class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Creative refresh</div>
+                    <div class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> ROI tracking</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Platform Fees -->
+        <div class="rounded-lg border border-border overflow-hidden">
+            <div class="bg-charcoal py-4">
+                <h3 class="font-medium text-center">Platform Fees (You Pay)</h3>
+            </div>
+            <div class="divide-y divide-border text-sm">
+                <div class="flex justify-between px-4 py-3">
+                    <div>
+                        <p class="font-medium">WAVV</p>
+                        <p class="text-xs text-muted-foreground">Power dialer</p>
+                    </div>
+                    <p>$59<span class="text-muted-foreground">/mo</span></p>
+                </div>
+                <div class="flex justify-between px-4 py-3">
+                    <div>
+                        <p class="font-medium">CallRail</p>
+                        <p class="text-xs text-muted-foreground">Call attribution</p>
+                    </div>
+                    <p>$50-70<span class="text-muted-foreground">/mo</span></p>
+                </div>
+                <div class="flex justify-between px-4 py-3">
+                    <div>
+                        <p class="font-medium">SMS/Voice</p>
+                        <p class="text-xs text-muted-foreground">Per message</p>
+                    </div>
+                    <p class="text-muted-foreground">Variable</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ad Spend -->
+        <div class="rounded-lg border border-border overflow-hidden">
+            <div class="bg-charcoal py-4">
+                <h3 class="font-medium text-center">Recommended Ad Spend</h3>
+            </div>
+            <div class="grid grid-cols-2 gap-3 p-4">
+                <div class="rounded-md bg-secondary p-3 text-center">
+                    <p class="text-xs text-muted-foreground">Month 1</p>
+                    <p class="text-xl font-semibold mt-1">$3-4K</p>
+                </div>
+                <div class="rounded-md bg-secondary p-3 text-center">
+                    <p class="text-xs text-muted-foreground">Month 2+</p>
+                    <p class="text-xl font-semibold mt-1">$4.5-6K</p>
+                </div>
+            </div>
+            <div class="divide-y divide-border text-sm border-t border-border">
+                <div class="flex justify-between px-4 py-3">
+                    <span>Meta (FB/IG)</span>
+                    <span class="text-muted-foreground">$2,000-4,000</span>
+                </div>
+                <div class="flex justify-between px-4 py-3">
+                    <span>Google LSA</span>
+                    <span class="text-muted-foreground">$800-1,500</span>
+                </div>
+                <div class="flex justify-between px-4 py-3">
+                    <span>Google Search</span>
+                    <span class="text-muted-foreground">$200-500</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Expected ROI -->
+        <div class="rounded-lg border border-border overflow-hidden">
+            <div class="bg-charcoal py-4">
+                <h3 class="font-medium text-center">Expected Results</h3>
+            </div>
+            <div class="p-4">
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <p class="text-2xl font-semibold">$30-50</p>
+                        <p class="text-sm text-muted-foreground">CPL (optimized)</p>
+                    </div>
+                    <div>
+                        <p class="text-2xl font-semibold">25-40</p>
+                        <p class="text-sm text-muted-foreground">Leads/week</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex justify-center pt-4 text-sm">
+            <a href="index.html" class="text-muted-foreground hover:text-foreground transition-colors">← Back to Overview</a>
+        </div>
+    </main>
+
+    <footer class="border-t border-border mt-12">
+        <div class="max-w-3xl mx-auto px-4 py-6 text-center text-sm text-muted-foreground">
+            © 2026 Endless Winning Agency
+        </div>
+    </footer>
+</body>
+</html>
