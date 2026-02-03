@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline | 60-Day Marketing System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        border: "hsl(240 3.7% 15.9%)",
+                        background: "hsl(240 10% 3.9%)",
+                        foreground: "hsl(0 0% 98%)",
+                        primary: { DEFAULT: "hsl(0 0% 98%)", foreground: "hsl(240 5.9% 10%)" },
+                        secondary: { DEFAULT: "hsl(240 3.7% 15.9%)", foreground: "hsl(0 0% 98%)" },
+                        muted: { DEFAULT: "hsl(240 3.7% 15.9%)", foreground: "hsl(240 5% 64.9%)" },
+                        charcoal: "hsl(240 6% 10%)",
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .nav-scroll {
+            -webkit-overflow-scrolling: touch;
+            scroll-snap-type: x mandatory;
+            scroll-padding: 0 16px;
+        }
+        .nav-scroll > a { scroll-snap-align: center; }
+        .nav-container { position: relative; }
+        .nav-container::before,
+        .nav-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 24px;
+            pointer-events: none;
+            z-index: 10;
+        }
+        .nav-container::before {
+            left: 0;
+            background: linear-gradient(to right, hsl(240 10% 3.9%), transparent);
+        }
+        .nav-container::after {
+            right: 0;
+            background: linear-gradient(to left, hsl(240 10% 3.9%), transparent);
+        }
+
+        /* Timeline Styles */
+        .timeline-container {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        /* The main flowing line */
+        .timeline-line {
+            position: absolute;
+            left: 0.75rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg,
+                hsl(240 3.7% 25.9%) 0%,
+                hsl(142 76% 36%) 25%,
+                hsl(142 76% 36%) 50%,
+                hsl(217 91% 60%) 75%,
+                hsl(240 3.7% 25.9%) 100%
+            );
+            background-size: 100% 200%;
+            animation: flowLine 4s ease-in-out infinite;
+        }
+
+        @keyframes flowLine {
+            0%, 100% { background-position: 0% 0%; }
+            50% { background-position: 0% 100%; }
+        }
+
+        /* Flowing particles on the line */
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -3px;
+            width: 8px;
+            height: 8px;
+            background: hsl(142 76% 50%);
+            border-radius: 50%;
+            box-shadow: 0 0 10px hsl(142 76% 50%), 0 0 20px hsl(142 76% 50%);
+            animation: particleFlow 6s ease-in-out infinite;
+        }
+
+        @keyframes particleFlow {
+            0% { top: 0%; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+
+        /* Timeline nodes */
+        .timeline-node {
+            position: relative;
+            padding-bottom: 2rem;
+        }
+
+        .timeline-node:last-child {
+            padding-bottom: 0;
+        }
+
+        .node-marker {
+            position: absolute;
+            left: -2rem;
+            top: 0.25rem;
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .node-marker.active {
+            background: hsl(142 76% 36%);
+            color: white;
+            box-shadow: 0 0 0 4px hsla(142, 76%, 36%, 0.2);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .node-marker.upcoming {
+            background: hsl(217 91% 60%);
+            color: white;
+        }
+
+        .node-marker.complete {
+            background: hsl(240 3.7% 25.9%);
+            color: hsl(240 5% 64.9%);
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 0 4px hsla(142, 76%, 36%, 0.2);
+                transform: scale(1);
+            }
+            50% {
+                box-shadow: 0 0 0 8px hsla(142, 76%, 36%, 0.1), 0 0 20px hsla(142, 76%, 36%, 0.3);
+                transform: scale(1.05);
+            }
+        }
+
+        /* Node content cards */
+        .node-card {
+            background: hsl(240 6% 10%);
+            border: 1px solid hsl(240 3.7% 15.9%);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .node-card:hover {
+            transform: translateX(4px);
+            border-color: hsl(240 3.7% 25.9%);
+            box-shadow: -4px 0 0 hsl(142 76% 36%);
+        }
+
+        .node-card.active {
+            border-color: hsl(142 76% 36%);
+            box-shadow: -4px 0 0 hsl(142 76% 36%), 0 0 20px hsla(142, 76%, 36%, 0.1);
+        }
+
+        /* Week badges */
+        .week-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        /* Milestone markers */
+        .milestone {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-top: 0.75rem;
+        }
+
+        .milestone.launch {
+            background: hsla(142, 76%, 36%, 0.15);
+            border: 1px solid hsla(142, 76%, 36%, 0.3);
+            color: hsl(142 76% 50%);
+        }
+
+        .milestone.handoff {
+            background: hsla(217, 91%, 60%, 0.15);
+            border: 1px solid hsla(217, 91%, 60%, 0.3);
+            color: hsl(217 91% 70%);
+        }
+
+        /* Task list items */
+        .task-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            padding: 0.25rem 0;
+            font-size: 0.875rem;
+            color: hsl(240 5% 64.9%);
+        }
+
+        .task-item::before {
+            content: '→';
+            color: hsl(240 3.7% 35.9%);
+            flex-shrink: 0;
+        }
+
+        /* Progress indicator */
+        .progress-bar {
+            position: relative;
+            height: 4px;
+            background: hsl(240 3.7% 15.9%);
+            border-radius: 2px;
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+
+        .progress-fill {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            background: linear-gradient(90deg, hsl(142 76% 36%), hsl(217 91% 60%));
+            border-radius: 2px;
+            animation: progressPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes progressPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        /* Deliverable tags */
+        .deliverable-tag {
+            display: inline-flex;
+            padding: 0.25rem 0.5rem;
+            background: hsl(240 3.7% 15.9%);
+            border: 1px solid hsl(240 3.7% 20.9%);
+            border-radius: 0.25rem;
+            font-size: 0.75rem;
+            color: hsl(240 5% 74.9%);
+            margin-right: 0.25rem;
+            margin-bottom: 0.25rem;
+        }
+
+        /* KPI Grid */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+        }
+
+        .kpi-item {
+            text-align: center;
+            padding: 0.75rem;
+            background: hsl(240 3.7% 12.9%);
+            border-radius: 0.375rem;
+        }
+    </style>
+</head>
+<body class="bg-background text-foreground min-h-screen antialiased">
+    <header class="border-b border-border">
+        <div class="max-w-3xl mx-auto px-4 py-6 text-center">
+            <h1 class="text-xl font-semibold tracking-tight">60-Day Marketing System</h1>
+        </div>
+    </header>
+
+    <nav class="sticky top-0 z-50 bg-background/95 backdrop-blur border-b border-border">
+        <div class="nav-container max-w-3xl mx-auto">
+            <div class="nav-scroll no-scrollbar overflow-x-auto flex gap-1 px-4 py-3 sm:justify-center">
+                <a href="index.html" class="flex-shrink-0 inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground hover:bg-secondary transition-colors">Overview</a>
+                <a href="branding.html" class="flex-shrink-0 inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground hover:bg-secondary transition-colors">Branding</a>
+                <a href="video.html" class="flex-shrink-0 inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground hover:bg-secondary transition-colors">Video</a>
+                <a href="crm.html" class="flex-shrink-0 inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground hover:bg-secondary transition-colors">CRM</a>
+                <a href="ai.html" class="flex-shrink-0 inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground hover:bg-secondary transition-colors">AI</a>
+                <a href="social.html" class="flex-shrink-0 inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground hover:bg-secondary transition-colors">Social</a>
+                <a href="ads.html" class="flex-shrink-0 inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground hover:bg-secondary transition-colors">Ads</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-3xl mx-auto px-4 py-8">
+        <!-- Investment / Timeline Toggle -->
+        <div class="flex justify-center gap-2 mb-8">
+            <a href="investment.html" class="inline-flex items-center justify-center rounded-full border border-border text-muted-foreground px-6 py-2 text-sm font-medium hover:bg-secondary transition-colors">
+                Investment
+            </a>
+            <a href="timeline.html" class="inline-flex items-center justify-center rounded-full bg-primary text-primary-foreground px-6 py-2 text-sm font-semibold">
+                Timeline
+            </a>
+        </div>
+
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h2 class="text-2xl font-semibold">Your 60-Day Journey</h2>
+            <p class="text-sm text-muted-foreground mt-1">From kickoff to leads flowing</p>
+
+            <!-- Progress Bar -->
+            <div class="max-w-md mx-auto mt-4">
+                <div class="flex justify-between text-xs text-muted-foreground mb-1">
+                    <span>Day 1</span>
+                    <span>Day 60</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 100%;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Timeline -->
+        <div class="timeline-container">
+            <div class="timeline-line"></div>
+
+            <!-- Phase 1: Foundation -->
+            <div class="timeline-node">
+                <div class="node-marker active">1</div>
+                <div class="node-card active">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="font-semibold text-lg">Foundation</h3>
+                        <span class="week-badge bg-green-950 text-green-400 border border-green-900">Weeks 1-2</span>
+                    </div>
+
+                    <div class="space-y-1 mb-3">
+                        <div class="task-item">Branding kickoff & discovery</div>
+                        <div class="task-item">Video shoot scheduled & captured</div>
+                        <div class="task-item">CRM setup & pipeline design</div>
+                        <div class="task-item">Social profiles created</div>
+                        <div class="task-item">A2P & 10DLC registration started</div>
+                    </div>
+
+                    <div class="flex flex-wrap">
+                        <span class="deliverable-tag">Brand assets</span>
+                        <span class="deliverable-tag">Profiles live</span>
+                        <span class="deliverable-tag">Landing page draft</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phase 2: Build & Test -->
+            <div class="timeline-node">
+                <div class="node-marker active">2</div>
+                <div class="node-card">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="font-semibold text-lg">Build & Test</h3>
+                        <span class="week-badge bg-green-950 text-green-400 border border-green-900">Weeks 3-4</span>
+                    </div>
+
+                    <div class="space-y-1 mb-3">
+                        <div class="task-item">Video post-production complete</div>
+                        <div class="task-item">AI voice & messaging bots live</div>
+                        <div class="task-item">CRM integrations connected</div>
+                        <div class="task-item">Campaign builds in Meta & Google</div>
+                        <div class="task-item">Integration testing</div>
+                    </div>
+
+                    <div class="milestone launch">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                        <span>LAUNCH — Ads live, leads start flowing</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phase 3: Optimize -->
+            <div class="timeline-node">
+                <div class="node-marker upcoming">3</div>
+                <div class="node-card">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="font-semibold text-lg">Optimize</h3>
+                        <span class="week-badge bg-blue-950 text-blue-400 border border-blue-900">Weeks 5-6</span>
+                    </div>
+
+                    <div class="space-y-1 mb-3">
+                        <div class="task-item">Audience testing & refinement</div>
+                        <div class="task-item">Creative A/B testing</div>
+                        <div class="task-item">Scale winning ad sets</div>
+                        <div class="task-item">Month 2 content execution</div>
+                        <div class="task-item">CPL optimization</div>
+                    </div>
+
+                    <div class="flex flex-wrap">
+                        <span class="deliverable-tag">Campaigns optimized</span>
+                        <span class="deliverable-tag">CPL improving</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phase 4: Handoff -->
+            <div class="timeline-node">
+                <div class="node-marker upcoming">4</div>
+                <div class="node-card">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="font-semibold text-lg">Handoff</h3>
+                        <span class="week-badge bg-blue-950 text-blue-400 border border-blue-900">Weeks 7-8</span>
+                    </div>
+
+                    <div class="space-y-1 mb-3">
+                        <div class="task-item">Performance review</div>
+                        <div class="task-item">Client training sessions</div>
+                        <div class="task-item">Documentation delivery</div>
+                        <div class="task-item">Transition to maintenance</div>
+                    </div>
+
+                    <div class="milestone handoff">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        <span>System Operational — Maintenance begins</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Success Metrics -->
+        <div class="mt-12 rounded-lg border border-border overflow-hidden">
+            <div class="bg-charcoal py-4">
+                <h3 class="font-medium text-center">Success Metrics at Day 60</h3>
+            </div>
+            <div class="p-4">
+                <div class="kpi-grid">
+                    <div class="kpi-item">
+                        <p class="text-2xl font-semibold">25-40</p>
+                        <p class="text-xs text-muted-foreground">Leads/Week</p>
+                    </div>
+                    <div class="kpi-item">
+                        <p class="text-2xl font-semibold">$75-100</p>
+                        <p class="text-xs text-muted-foreground">Cost/Qualified Lead</p>
+                    </div>
+                    <div class="kpi-item">
+                        <p class="text-2xl font-semibold">60%+</p>
+                        <p class="text-xs text-muted-foreground">Appointment Rate</p>
+                    </div>
+                    <div class="kpi-item">
+                        <p class="text-2xl font-semibold">85%+</p>
+                        <p class="text-xs text-muted-foreground">Show Rate</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="flex justify-center pt-8 text-sm">
+            <a href="index.html" class="text-muted-foreground hover:text-foreground transition-colors">&larr; Back to Overview</a>
+        </div>
+    </main>
+
+    <footer class="border-t border-border mt-12">
+        <div class="max-w-3xl mx-auto px-4 py-6 text-center text-sm text-muted-foreground">
+            &copy; 2026 Endless Winning Agency
+        </div>
+    </footer>
+</body>
+</html>
