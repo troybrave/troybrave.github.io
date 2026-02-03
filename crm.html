@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRM | 60-Day Marketing System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        border: "hsl(240 3.7% 15.9%)",
+                        background: "hsl(240 10% 3.9%)",
+                        foreground: "hsl(0 0% 98%)",
+                        primary: { DEFAULT: "hsl(0 0% 98%)", foreground: "hsl(240 5.9% 10%)" },
+                        secondary: { DEFAULT: "hsl(240 3.7% 15.9%)", foreground: "hsl(0 0% 98%)" },
+                        muted: { DEFAULT: "hsl(240 3.7% 15.9%)", foreground: "hsl(240 5% 64.9%)" },
+                        charcoal: "hsl(240 6% 10%)",
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .nav-scroll {
+            -webkit-overflow-scrolling: touch;
+            scroll-snap-type: x mandatory;
+            scroll-padding: 0 16px;
+        }
+        .nav-scroll > a { scroll-snap-align: center; }
+        .nav-container { position: relative; }
+        .nav-container::before,
+        .nav-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 24px;
+            pointer-events: none;
+            z-index: 10;
+        }
+        .nav-container::before {
+            left: 0;
+            background: linear-gradient(to right, hsl(240 10% 3.9%), transparent);
+        }
+        .nav-container::after {
+            right: 0;
+            background: linear-gradient(to left, hsl(240 10% 3.9%), transparent);
+        }
+    </style>
+</head>
+<body class="bg-background text-foreground min-h-screen antialiased">
+    <header class="border-b border-border">
+        <div class="max-w-3xl mx-auto px-4 py-6 text-center">
+            <h1 class="text-xl font-semibold tracking-tight">60-Day Marketing System</h1>
+        </div>
+    </header>
+
+    <nav class="sticky top-0 z-50 bg-background/95 backdrop-blur border-b border-border">
+        <div class="nav-container max-w-3xl mx-auto">
+            <div class="nav-scroll no-scrollbar overflow-x-auto flex gap-1 px-4 py-3 sm:justify-center">
+                <a href="index.html" class="flex-shrink-0 inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground hover:bg-secondary transition-colors">Overview</a>
+                <a href="branding.html" class="flex-shrink-0 inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground hover:bg-secondary transition-colors">Branding</a>
+                <a href="video.html" class="flex-shrink-0 inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground hover:bg-secondary transition-colors">Video</a>
+                <a href="crm.html" class="flex-shrink-0 inline-flex items-center justify-center rounded-md bg-secondary text-secondary-foreground px-3 py-1.5 text-sm font-medium ring-1 ring-inset ring-white/10">CRM</a>
+                <a href="ai.html" class="flex-shrink-0 inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground hover:bg-secondary transition-colors">AI</a>
+                <a href="social.html" class="flex-shrink-0 inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground hover:bg-secondary transition-colors">Social</a>
+                <a href="ads.html" class="flex-shrink-0 inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground hover:bg-secondary transition-colors">Ads</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-3xl mx-auto px-4 py-8 space-y-6">
+        <div class="text-center">
+            <span class="inline-flex w-12 h-12 rounded-full bg-primary text-primary-foreground items-center justify-center text-lg font-semibold mb-3">3</span>
+            <h2 class="text-xl font-semibold">CRM & Automation</h2>
+            <p class="text-sm text-muted-foreground mt-1">Your sales machine, systematized</p>
+        </div>
+
+        <!-- What We Build -->
+        <div class="rounded-lg border border-border overflow-hidden">
+            <div class="bg-charcoal py-4">
+                <h3 class="font-medium text-center">What We Build</h3>
+            </div>
+            <div class="p-4 space-y-3">
+                <div class="flex items-start gap-3">
+                    <svg class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                    <div>
+                        <p class="text-sm font-medium">Lead Integration</p>
+                        <p class="text-xs text-muted-foreground">Auto-capture from Google, Meta, calls</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3">
+                    <svg class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                    <div>
+                        <p class="text-sm font-medium">Sales Pipeline</p>
+                        <p class="text-xs text-muted-foreground">Custom stages for your process</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3">
+                    <svg class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                    <div>
+                        <p class="text-sm font-medium">Lead Qualification</p>
+                        <p class="text-xs text-muted-foreground">Smart forms to identify hot leads</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3">
+                    <svg class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                    <div>
+                        <p class="text-sm font-medium">Automation Sequences</p>
+                        <p class="text-xs text-muted-foreground">Reminders, no-show recovery, follow-ups</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3">
+                    <svg class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                    <div>
+                        <p class="text-sm font-medium">Reporting Dashboard</p>
+                        <p class="text-xs text-muted-foreground">Lead volume, conversion, pipeline health</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Integrations -->
+        <div class="rounded-lg border border-border overflow-hidden">
+            <div class="bg-charcoal py-4">
+                <h3 class="font-medium text-center">Integrations</h3>
+            </div>
+            <div class="grid grid-cols-2 gap-3 p-4">
+                <div class="rounded-md bg-secondary p-3">
+                    <p class="text-sm font-medium">Taskaroo</p>
+                    <p class="text-xs text-muted-foreground">Payments, quotes, invoices</p>
+                </div>
+                <div class="rounded-md bg-secondary p-3">
+                    <p class="text-sm font-medium">WAVV</p>
+                    <p class="text-xs text-muted-foreground">Power dialer</p>
+                </div>
+                <div class="rounded-md bg-secondary p-3">
+                    <p class="text-sm font-medium">CallRail</p>
+                    <p class="text-xs text-muted-foreground">Call attribution</p>
+                </div>
+                <div class="rounded-md bg-secondary p-3">
+                    <p class="text-sm font-medium">Twilio</p>
+                    <p class="text-xs text-muted-foreground">SMS + Voice</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Collaborative Design -->
+        <div class="rounded-lg border border-border overflow-hidden">
+            <div class="bg-charcoal py-4">
+                <h3 class="font-medium text-center">We Design Together</h3>
+            </div>
+            <div class="p-4">
+                <p class="text-sm text-muted-foreground mb-3">You handle selling. We handle the system.</p>
+                <div class="space-y-2 text-sm">
+                    <p class="flex items-center gap-2"><span class="text-muted-foreground">→</span> What messaging hits at each stage</p>
+                    <p class="flex items-center gap-2"><span class="text-muted-foreground">→</span> When AI hands off to human</p>
+                    <p class="flex items-center gap-2"><span class="text-muted-foreground">→</span> What "qualified" actually means</p>
+                    <p class="flex items-center gap-2"><span class="text-muted-foreground">→</span> Success metrics we both track</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex justify-between pt-4 text-sm">
+            <a href="video.html" class="text-muted-foreground hover:text-foreground transition-colors">← Video</a>
+            <a href="ai.html" class="text-muted-foreground hover:text-foreground transition-colors">AI →</a>
+        </div>
+    </main>
+
+    <footer class="border-t border-border mt-12">
+        <div class="max-w-3xl mx-auto px-4 py-6 text-center text-sm text-muted-foreground">
+            © 2026 Endless Winning Agency
+        </div>
+    </footer>
+</body>
+</html>
