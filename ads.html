@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO + Paid Ads | 60-Day Marketing System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        border: "hsl(240 3.7% 15.9%)",
+                        background: "hsl(240 10% 3.9%)",
+                        foreground: "hsl(0 0% 98%)",
+                        primary: { DEFAULT: "hsl(0 0% 98%)", foreground: "hsl(240 5.9% 10%)" },
+                        secondary: { DEFAULT: "hsl(240 3.7% 15.9%)", foreground: "hsl(0 0% 98%)" },
+                        muted: { DEFAULT: "hsl(240 3.7% 15.9%)", foreground: "hsl(240 5% 64.9%)" },
+                        charcoal: "hsl(240 6% 10%)",
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .nav-scroll {
+            -webkit-overflow-scrolling: touch;
+            scroll-snap-type: x mandatory;
+            scroll-padding: 0 16px;
+        }
+        .nav-scroll > a { scroll-snap-align: center; }
+        .nav-container { position: relative; }
+        .nav-container::before,
+        .nav-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 24px;
+            pointer-events: none;
+            z-index: 10;
+        }
+        .nav-container::before {
+            left: 0;
+            background: linear-gradient(to right, hsl(240 10% 3.9%), transparent);
+        }
+        .nav-container::after {
+            right: 0;
+            background: linear-gradient(to left, hsl(240 10% 3.9%), transparent);
+        }
+    </style>
+</head>
+<body class="bg-background text-foreground min-h-screen antialiased">
+    <header class="border-b border-border">
+        <div class="max-w-3xl mx-auto px-4 py-6 text-center">
+            <h1 class="text-xl font-semibold tracking-tight">60-Day Marketing System</h1>
+        </div>
+    </header>
+
+    <nav class="sticky top-0 z-50 bg-background/95 backdrop-blur border-b border-border">
+        <div class="nav-container max-w-3xl mx-auto">
+            <div class="nav-scroll no-scrollbar overflow-x-auto flex gap-1 px-4 py-3 sm:justify-center">
+                <a href="index.html" class="flex-shrink-0 inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground hover:bg-secondary transition-colors">Overview</a>
+                <a href="branding.html" class="flex-shrink-0 inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground hover:bg-secondary transition-colors">Branding</a>
+                <a href="video.html" class="flex-shrink-0 inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground hover:bg-secondary transition-colors">Video</a>
+                <a href="crm.html" class="flex-shrink-0 inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground hover:bg-secondary transition-colors">CRM</a>
+                <a href="ai.html" class="flex-shrink-0 inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground hover:bg-secondary transition-colors">AI</a>
+                <a href="social.html" class="flex-shrink-0 inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground hover:bg-secondary transition-colors">Social</a>
+                <a href="ads.html" class="flex-shrink-0 inline-flex items-center justify-center rounded-md bg-secondary text-secondary-foreground px-3 py-1.5 text-sm font-medium ring-1 ring-inset ring-white/10">Ads</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-3xl mx-auto px-4 py-8 space-y-6">
+        <div class="text-center">
+            <span class="inline-flex w-12 h-12 rounded-full bg-primary text-primary-foreground items-center justify-center text-lg font-semibold mb-3">6</span>
+            <h2 class="text-xl font-semibold">SEO + Paid Ads</h2>
+            <p class="text-sm text-muted-foreground mt-1">Multi-channel acquisition strategy</p>
+        </div>
+
+        <!-- Campaign Funnel Overview -->
+        <div class="rounded-lg border border-border overflow-hidden">
+            <div class="bg-charcoal py-4">
+                <h3 class="font-medium text-center">Campaign Funnel Strategy</h3>
+            </div>
+            <div class="p-4 space-y-4">
+                <p class="text-sm text-muted-foreground text-center">A two-phase funnel that warms audiences before asking for the sale</p>
+
+                <!-- Funnel Visual -->
+                <div class="space-y-3">
+                    <div class="rounded-lg bg-blue-950/50 border border-blue-900/50 p-4">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class="flex-shrink-0 w-8 h-8 rounded-full bg-blue-500 text-white flex items-center justify-center text-sm font-bold">1</span>
+                            <p class="font-medium text-blue-400">Interest Campaign</p>
+                        </div>
+                        <p class="text-sm text-muted-foreground ml-11">Educational & entertaining videos build awareness. No hard sell. Goal: engagement and watch time.</p>
+                    </div>
+
+                    <div class="flex justify-center">
+                        <svg class="w-6 h-6 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+                    </div>
+
+                    <div class="rounded-lg bg-amber-950/50 border border-amber-900/50 p-4">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class="flex-shrink-0 w-8 h-8 rounded-full bg-amber-500 text-white flex items-center justify-center text-sm font-bold">2</span>
+                            <p class="font-medium text-amber-400">Retargeting Trigger</p>
+                        </div>
+                        <p class="text-sm text-muted-foreground ml-11">Users who watch 50%+ of videos are moved to a custom audience. They've shown intent.</p>
+                    </div>
+
+                    <div class="flex justify-center">
+                        <svg class="w-6 h-6 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+                    </div>
+
+                    <div class="rounded-lg bg-green-950/50 border border-green-900/50 p-4">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class="flex-shrink-0 w-8 h-8 rounded-full bg-green-500 text-white flex items-center justify-center text-sm font-bold">3</span>
+                            <p class="font-medium text-green-400">CTA Campaign</p>
+                        </div>
+                        <p class="text-sm text-muted-foreground ml-11">Direct offer to warm audience: "Free Water Test" with urgency. These leads convert higher.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Facebook & Instagram -->
+        <div class="rounded-lg border border-border overflow-hidden">
+            <div class="bg-charcoal py-4">
+                <h3 class="font-medium text-center">Facebook & Instagram</h3>
+            </div>
+            <div class="divide-y divide-border">
+                <div class="p-4">
+                    <p class="text-sm font-medium mb-2">Interest Campaign (Top of Funnel)</p>
+                    <div class="space-y-2 text-sm text-muted-foreground">
+                        <p class="flex items-start gap-2"><span class="text-blue-400">-</span> Target: Homeowners in Brevard County, 35-65</p>
+                        <p class="flex items-start gap-2"><span class="text-blue-400">-</span> Interests: Home improvement, health, family</p>
+                        <p class="flex items-start gap-2"><span class="text-blue-400">-</span> Content: Educational videos, water facts, local stories</p>
+                        <p class="flex items-start gap-2"><span class="text-blue-400">-</span> Objective: Video Views (ThruPlay)</p>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <p class="text-sm font-medium mb-2">CTA Campaign (Bottom of Funnel)</p>
+                    <div class="space-y-2 text-sm text-muted-foreground">
+                        <p class="flex items-start gap-2"><span class="text-green-400">-</span> Audience: 50%+ video viewers from Interest campaign</p>
+                        <p class="flex items-start gap-2"><span class="text-green-400">-</span> Content: Direct offer, testimonials, urgency</p>
+                        <p class="flex items-start gap-2"><span class="text-green-400">-</span> Objective: Lead Generation / Conversions</p>
+                        <p class="flex items-start gap-2"><span class="text-green-400">-</span> CTA: "Schedule Your Free Water Test"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- YouTube -->
+        <div class="rounded-lg border border-border overflow-hidden">
+            <div class="bg-charcoal py-4">
+                <h3 class="font-medium text-center">YouTube Ads</h3>
+            </div>
+            <div class="divide-y divide-border">
+                <div class="p-4">
+                    <p class="text-sm font-medium mb-2">Discovery & In-Stream Ads</p>
+                    <div class="space-y-2 text-sm text-muted-foreground">
+                        <p class="flex items-start gap-2"><span class="text-red-400">-</span> Target: Local homeowners searching home/health topics</p>
+                        <p class="flex items-start gap-2"><span class="text-red-400">-</span> Placements: Home improvement, local news channels</p>
+                        <p class="flex items-start gap-2"><span class="text-red-400">-</span> Same funnel: Awareness → Retarget viewers → CTA</p>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <p class="text-sm font-medium mb-2">Retargeting Integration</p>
+                    <div class="space-y-2 text-sm text-muted-foreground">
+                        <p class="flex items-start gap-2"><span class="text-amber-400">-</span> YouTube viewers synced to Meta custom audiences</p>
+                        <p class="flex items-start gap-2"><span class="text-amber-400">-</span> Cross-platform retargeting amplifies reach</p>
+                        <p class="flex items-start gap-2"><span class="text-amber-400">-</span> Website visitors added to retarget pools</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Google / SEO -->
+        <div class="rounded-lg border border-border overflow-hidden">
+            <div class="bg-charcoal py-4">
+                <h3 class="font-medium text-center">Google Ads + SEO</h3>
+            </div>
+            <div class="divide-y divide-border">
+                <div class="p-4">
+                    <p class="text-sm font-medium mb-2">Google Local Services Ads (LSA)</p>
+                    <div class="space-y-2 text-sm text-muted-foreground">
+                        <p class="flex items-start gap-2"><span class="text-green-400">-</span> "Google Guaranteed" badge builds trust</p>
+                        <p class="flex items-start gap-2"><span class="text-green-400">-</span> Pay-per-lead model (only pay for real inquiries)</p>
+                        <p class="flex items-start gap-2"><span class="text-green-400">-</span> High-intent: People actively searching for water filtration</p>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <p class="text-sm font-medium mb-2">Google Search Ads</p>
+                    <div class="space-y-2 text-sm text-muted-foreground">
+                        <p class="flex items-start gap-2"><span class="text-blue-400">-</span> Keywords: "water filtration Melbourne FL", "water test Brevard"</p>
+                        <p class="flex items-start gap-2"><span class="text-blue-400">-</span> Landing page optimized for conversion</p>
+                        <p class="flex items-start gap-2"><span class="text-blue-400">-</span> Call tracking for attribution</p>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <p class="text-sm font-medium mb-2">SEO Strategy</p>
+                    <div class="space-y-2 text-sm text-muted-foreground">
+                        <p class="flex items-start gap-2"><span class="text-purple-400">-</span> Google Business Profile optimization</p>
+                        <p class="flex items-start gap-2"><span class="text-purple-400">-</span> Local citations and directory listings</p>
+                        <p class="flex items-start gap-2"><span class="text-purple-400">-</span> Review generation strategy</p>
+                        <p class="flex items-start gap-2"><span class="text-purple-400">-</span> Content targeting local water quality searches</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CRM Integration -->
+        <div class="rounded-lg border border-border overflow-hidden">
+            <div class="bg-charcoal py-4">
+                <h3 class="font-medium text-center">CRM Integration</h3>
+            </div>
+            <div class="p-4 space-y-3">
+                <p class="text-sm text-muted-foreground text-center mb-4">Every lead flows directly into your CRM with full attribution</p>
+                <div class="grid gap-3">
+                    <div class="rounded-md bg-secondary p-3">
+                        <p class="text-sm font-medium">Lead Source Tracking</p>
+                        <p class="text-xs text-muted-foreground mt-1">Know exactly which ad, platform, and campaign generated each lead</p>
+                    </div>
+                    <div class="rounded-md bg-secondary p-3">
+                        <p class="text-sm font-medium">Auto-Assignment</p>
+                        <p class="text-xs text-muted-foreground mt-1">Hot leads (CTA campaign) flagged for immediate follow-up</p>
+                    </div>
+                    <div class="rounded-md bg-secondary p-3">
+                        <p class="text-sm font-medium">Audience Sync</p>
+                        <p class="text-xs text-muted-foreground mt-1">CRM contacts synced back to ad platforms for lookalike audiences</p>
+                    </div>
+                    <div class="rounded-md bg-secondary p-3">
+                        <p class="text-sm font-medium">ROI Reporting</p>
+                        <p class="text-xs text-muted-foreground mt-1">Track cost-per-lead and cost-per-sale by channel</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Budget Allocation -->
+        <div class="rounded-lg border border-border overflow-hidden">
+            <div class="bg-charcoal py-4">
+                <h3 class="font-medium text-center">Recommended Budget Split</h3>
+            </div>
+            <div class="divide-y divide-border text-sm">
+                <div class="flex justify-between px-4 py-3">
+                    <span>Meta (FB/IG)</span>
+                    <span class="font-medium">50-60%</span>
+                </div>
+                <div class="flex justify-between px-4 py-3">
+                    <span>Google LSA</span>
+                    <span class="font-medium">25-30%</span>
+                </div>
+                <div class="flex justify-between px-4 py-3">
+                    <span>Google Search</span>
+                    <span class="font-medium">10-15%</span>
+                </div>
+                <div class="flex justify-between px-4 py-3">
+                    <span>YouTube</span>
+                    <span class="font-medium">5-10%</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex justify-between pt-4 text-sm">
+            <a href="social.html" class="text-muted-foreground hover:text-foreground transition-colors">&larr; Social</a>
+        </div>
+    </main>
+
+    <footer class="border-t border-border mt-12">
+        <div class="max-w-3xl mx-auto px-4 py-6 text-center text-sm text-muted-foreground">
+            &copy; 2026 Endless Winning Agency
+        </div>
+    </footer>
+</body>
+</html>
